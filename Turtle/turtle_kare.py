@@ -11,10 +11,6 @@ for i in range(4):
     instance_turtle.left(90)
     instance_turtle.forward(200)
 
-
-
-
-
 turtle.done()
 
 
