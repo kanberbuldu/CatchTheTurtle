@@ -9,7 +9,7 @@ screen.bgcolor("light blue")
 FONT = ("arial",15,"bold")
 gride_size = 10
 turtle_list =[]
-game_over = False
+
 
 #Score turtle
 
@@ -65,13 +65,12 @@ def hide_turtle():
         t.hideturtle()
 
 def random_show():
-    if not game_over:
-        hide_turtle()
-        random.choice(turtle_list).showturtle()
-        screen.ontimer(random_show, 500)
+    hide_turtle()
+    random.choice(turtle_list).showturtle()
+
+    screen.ontimer(random_show, 500)
 
 def count_down(time):
-    global game_over
     count_down_turtle.hideturtle()
     count_down_turtle.color("black")
     top_height = screen.window_height() / 2
@@ -86,7 +85,6 @@ def count_down(time):
         count_down_turtle.write(arg=f"Time: {time} ", move=False, align="Center", font=FONT)
         screen.ontimer(lambda: count_down(time -1 ),1000)
     else:
-        game_over = True
         count_down_turtle.clear()
         hide_turtle()
         count_down_turtle.write(arg="Game Over! ", move=False, align="Center", font=FONT)
@@ -94,12 +92,12 @@ def count_down(time):
 
 
 turtle.tracer(0)
+
 setup_turtle_score()
 setup_turtle()
-
-random_show()
-count_down(10)
 hide_turtle()
+random_show()
+count_down(15)
 turtle.tracer(1)
 
 turtle.mainloop()
